@@ -10,7 +10,10 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "prepare_codepush": "npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
     "build_debug_apk": "yarn prepare_codepush && cd android && ./gradlew assembleDebug",
-    "release_codepush": "appcenter codepush release-react -a tahmid1989-81z8/Notebook-android"
+    "release_codepush_android_staging": "appcenter codepush release-react -a tahmid1989-81z8/Notebook-android -d Staging",
+    "release_codepush_android_prod": "appcenter codepush release-react -a tahmid1989-81z8/Notebook-android -d Production",
+    "release_codepush_ios_staging": "appcenter codepush release-react -a tahmid1989-81z8/Notebook-iOS -d Staging",
+    "release_codepush_ios_prod": "appcenter codepush release-react -a tahmid1989-81z8/Notebook-iOS -d Production"
   },
   "dependencies": {
     "appcenter": "4.4.5",
