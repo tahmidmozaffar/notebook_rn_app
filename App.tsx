@@ -19,8 +19,11 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import codePush from 'react-native-code-push';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+
+let codePushOptions = {checkFrequency: codePush.CheckFrequency.MANUAL};
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -40,7 +43,7 @@ const App = () => {
         style={backgroundStyle}>
         <View style={styles.buttonStyle}>
           <Button
-            title="Send Event"
+            title="Send More asdasd"
             accessibilityLabel="send event"
             onPress={async () => {
               await Analytics.setEnabled(true);
@@ -50,6 +53,15 @@ const App = () => {
                   console.log('event sent');
                 })
                 .catch(e => console.log(e));
+            }}
+          />
+          <Button
+            title="Download Codepush Update"
+            accessibilityLabel="Download Codepush Update"
+            onPress={() => {
+              codePush.sync({
+                installMode: codePush.InstallMode.IMMEDIATE,
+              });
             }}
           />
         </View>
@@ -80,4 +92,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default codePush(codePushOptions)(App);
